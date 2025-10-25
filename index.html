@@ -69,6 +69,53 @@
             transform: translateY(-2px);
             box-shadow: 0 15px 30px -5px rgba(129, 140, 248, 0.7);
         }
+
+        /* Skills Chip Style */
+        .skill-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem 0.3rem;
+            border: 1px solid rgba(129, 140, 248, 0.5); /* Light Indigo Border */
+            border-radius: 9999px; /* Tailwind rounded-full */
+            background-color: #1f2937; /* Tailwind bg-gray-800 */
+            color: #d1d5db; /* Tailwind text-gray-300 */
+            font-size: 0.9rem;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .skill-chip:hover {
+            background-color: rgba(129, 140, 248, 0.1);
+            border-color: #818cf8; /* Full Indigo on hover */
+        }
+        
+        .skill-chip svg {
+            margin-right: 0.5rem;
+            color: #818cf8; /* Indigo icon color */
+        }
+
+        /* Style for the vertical divider line */
+        .skills-divider {
+            position: relative;
+        }
+        
+        .skills-divider::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background-color: rgba(129, 140, 248, 0.3); /* Faint Indigo line */
+            transform: translateX(-50%);
+        }
+
+        /* Hide divider on mobile */
+        @media (max-width: 767px) {
+            .skills-divider::after {
+                content: none;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -169,38 +216,76 @@
         </div>
     </section>
 
-    <!-- SKILLS Section (now using the darkest background) -->
+    <!-- SKILLS Section (The new split-column, creator/developer design) -->
     <section id="skills" class="py-20 bg-gray-900">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <!-- Header text updated to soft white and border to accent color -->
-            <h2 class="text-4xl font-bold text-gray-100 mb-12 border-b-4 border-indigo-400 inline-block pb-2">Core Skills & Tools</h2>
+            <h2 class="text-4xl font-bold text-gray-100 mb-12 border-b-4 border-indigo-400 inline-block pb-2">Core Expertise</h2>
             
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                <!-- Skill Card 1 (Card background is now dark gray-800) -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 hover:bg-gray-700 transition duration-300 transform hover:-translate-y-1">
-                    <!-- Icon updated to accent color, text updated to soft white -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-                    <h3 class="text-xl font-semibold text-gray-100">React & Next.js</h3>
-                    <p class="text-sm text-gray-400">Modern Frontend</p>
+            <div class="max-w-4xl mx-auto md:grid md:grid-cols-2 skills-divider text-left md:text-center">
+                
+                <!-- COLUMN 1: DEVELOPMENT STACK -->
+                <div class="md:pr-10 mb-10 md:mb-0">
+                    <h3 class="text-3xl font-semibold text-gray-100 mb-6 flex items-center justify-center md:justify-end">
+                         <!-- Icon: Code -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-indigo-400 mr-2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        <span class="md:text-right">Development Stack</span>
+                    </h3>
+                    
+                    <div class="text-center md:text-right">
+                        <!-- SKILL CHIPS -->
+                        <div class="skill-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            HTML / CSS / Tailwind
+                        </div>
+                        <div class="skill-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                            React / Next.js
+                        </div>
+                        <div class="skill-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            Node.js
+                        </div>
+                        <div class="skill-chip">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            Python
+                        </div>
+                        <div class="skill-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                            Git / GitHub
+                        </div>
+                    </div>
                 </div>
-                <!-- Skill Card 2 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 hover:bg-gray-700 transition duration-300 transform hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
-                    <h3 class="text-xl font-semibold text-gray-100">HTML5 & CSS3</h3>
-                    <p class="text-sm text-gray-400">Semantic Markup</p>
+
+                <!-- COLUMN 2: CONTENT & STRATEGY -->
+                <div class="md:pl-10">
+                    <h3 class="text-3xl font-semibold text-gray-100 mb-6 flex items-center justify-center md:justify-start">
+                         <!-- Icon: Strategy -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-indigo-400 mr-2"><path d="M14.5 12.5L20 7M4 17L9.5 11.5M10.5 13.5L8 16M15 19L18 16M17 7L14 4"></path></svg>
+                        <span class="md:text-left">Content & Strategy</span>
+                    </h3>
+                    
+                    <div class="text-center md:text-left">
+                        <!-- SKILL CHIPS -->
+                        <div class="skill-chip">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M9 16.5V20M15 16.5V20M12 20v2"/></svg>
+                            Content Strategy
+                        </div>
+                        <div class="skill-chip">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2" ry="2"/><line x1="8" y1="21" x2="8" y2="3"/><line x1="16" y1="21" x2="16" y2="3"/></svg>
+                            Keyword Research (SEO)
+                        </div>
+                        <div class="skill-chip">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                            Storytelling / Copywriting
+                        </div>
+                        <div class="skill-chip">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 19l-9 3 9-3 9 3z"></path><path d="M4 17v-13h16v13"></path><path d="M4 4h16"></path></svg>
+                            Basic Video Editing
+                        </div>
+                    </div>
                 </div>
-                <!-- Skill Card 3 -->
-                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 hover:bg-gray-700 transition duration-300 transform hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    <h3 class="text-xl font-semibold text-gray-100">Python & Django</h3>
-                    <p class="text-sm text-gray-400">Robust Backend</p>
-                </div>
-                 <!-- Skill Card 4 -->
-                 <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 hover:bg-gray-700 transition duration-300 transform hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 7 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M9 16.5V20M15 16.5V20M12 20v2"/></svg>
-                    <h3 class="text-xl font-semibold text-gray-100">Content & SEO</h3>
-                    <p class="text-sm text-gray-400">Digital Strategy</p>
-                </div>
+
             </div>
         </div>
     </section>
