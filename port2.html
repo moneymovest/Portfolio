@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish Singh - Full-Stack Creator (FIXED)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* * FIX: Ensuring the body background is explicitly visible 
+         * Using a standard light gray (#f9f9f9) instead of the custom variable 
+         */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9; 
+        }
+
+        /* Define the accent color and simplify the glow using a robust filter */
+        :root {
+            --accent-color: #06b6d4; /* Cyan-500 */
+        }
+
+        /* 1. Custom Class for the Dynamic Glow & Box Shadow */
+        .dramatic-glow {
+            /* * Applying the SVG filter for distortion/liquefaction. 
+             * We use a robust filter and rely more on the CSS for the glow itself.
+             */
+            filter: url(#liquefy);
+            
+            /* Apply a strong, layered box shadow for the glow effect */
+            box-shadow: 
+                0 0 50px rgba(6, 182, 212, 0.7), 
+                0 0 100px rgba(6, 182, 212, 0.5); 
+            
+            /* CSS Animation for a 'breathing' effect */
+            animation: pulse-glow 4s infinite alternate ease-in-out;
+        }
+
+        /* Keyframes for the 'breathing' glow effect */
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 40px rgba(6, 182, 212, 0.8), 0 0 80px rgba(6, 182, 212, 0.4);
+                transform: scale(1);
+            }
+            100% {
+                box-shadow: 0 0 60px rgba(6, 182, 212, 1), 0 0 120px rgba(6, 182, 212, 0.6);
+                transform: scale(1.02);
+            }
+        }
+        
+        /* 2. Style for the Squircle image */
+        .profile-photo {
+            /* Makes the corners highly rounded (squircle) */
+            border-radius: 30%; 
+            transition: transform 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.03);
+        }
+
+        /* 3. Button style */
+        .cta-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -5px rgba(6, 182, 212, 0.5);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px -5px rgba(6, 182, 212, 0.7);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 
+        HIDDEN SVG FILTER DEFINITION 
+        This filter creates the subtle, watery distortion needed for the dramatic effect.
+    -->
+    <svg width="0" height="0" style="position: absolute; visibility: hidden;">
+        <filter id="liquefy">
+            <!-- feTurbulence generates the noise pattern -->
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="2" result="noise" />
+            <!-- feDisplacementMap uses the noise to distort the element -->
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R" yChannelSelector="G" result="displacement" />
+            <feMerge>
+                <feMergeNode in="displacement"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+            <!-- Animation to make the noise move -->
+            <animate attributeName="baseFrequency" dur="15s" values="0.02 0.03; 0.04 0.02; 0.02 0.03" repeatCount="indefinite" />
+        </filter>
+    </svg>
+
+
+    <!-- NAVIGATION -->
+    <header class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-between items-center z-10">
+        <div class="text-3xl font-extrabold tracking-tight text-gray-900">
+            Ashish Singh
+        </div>
+        <nav class="space-x-4 md:space-x-6 text-gray-600 font-medium">
+            <a href="#about" class="hover:text-cyan-500 transition duration-300">About</a>
+            <a href="#work" class="hover:text-cyan-500 transition duration-300">Work</a>
+            <a href="#skills" class="hover:text-cyan-500 transition duration-300">Skills</a>
+            <a href="#contact" class="hover:text-cyan-500 transition duration-300">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="container mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+        
+        <!-- Text Content Column -->
+        <div class="md:order-1 order-2 text-center md:text-left animate-slide-in">
+            <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tighter text-gray-900 mb-4">
+                Full-Stack <span class="text-cyan-500">Creator</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-6 max-w-lg mx-auto md:mx-0">
+                Crafting engaging <span class="font-semibold text-cyan-600">code-driven experiences</span> through modern development and strategic storytelling.
+            </p>
+            <div class="inline-flex space-x-4">
+                <a href="#work" class="cta-button bg-cyan-500 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-cyan-500/50">
+                    See My Work &rarr;
+                </a>
+                <a href="#contact" class="bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-300 transition duration-300">
+                    Hire Me
+                </a>
+            </div>
+        </div>
+
+        <!-- Photo and Dramatic Box Effect Column -->
+        <div class="md:order-2 order-1 flex justify-center md:justify-end">
+            <div class="w-64 h-64 sm:w-80 sm:h-80 relative">
+                <!-- 
+                    The dramatic-glow div acts as the glowing container. 
+                -->
+                <div class="absolute inset-0 p-4">
+                    <div class="dramatic-glow w-full h-full rounded-[30%] opacity-80"></div>
+                </div>
+
+                <!-- Your Profile Image (Using a squircle shape) -->
+                <!-- Placeholder Image is used. Replace with your image path! -->
+                <img 
+                    src=""C:\Users\AMRITA_DEY\Downloads\Ashish.jpg"" 
+                    alt="Ashish Singh Profile" 
+                    class="profile-photo absolute inset-0 w-full h-full object-cover transform translate-x-2 translate-y-2 border-4 border-white shadow-xl"
+                >
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Placeholder Content Sections (Demonstrating visual flow) -->
+    
+    <!-- ABOUT ME Section (with a subtle background to create contrast) -->
+    <section id="about" class="py-20 bg-white shadow-inner">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-8 border-b-4 border-cyan-500 inline-block pb-2">About Me</h2>
+            <div class="max-w-3xl mx-auto text-lg text-gray-700 leading-relaxed">
+                <p class="mb-4">
+                    I'm Ashish Singh, a developer passionate about blending technical precision with compelling narrative. My background in content creation provides a unique perspective in web development, ensuring that every project I build is not only highly performant but also tells a powerful and intuitive story.
+                </p>
+                <p>
+                    I specialize in modern JavaScript frameworks (React) and Python backends, always focusing on SEO-driven results and accessibility. Let's build something unforgettable.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-12 border-b-4 border-cyan-500 inline-block pb-2">Core Skills & Tools</h2>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <!-- Skill Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-cyan-500/50 hover:bg-cyan-50 transition duration-300 transform hover:-translate-y-1">
+                    <!-- Icon placeholder (using an inline SVG for full compatibility) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-500 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+                    <h3 class="text-xl font-semibold text-gray-800">React & Next.js</h3>
+                    <p class="text-sm text-gray-500">Modern Frontend</p>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-cyan-500/50 hover:bg-cyan-50 transition duration-300 transform hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-500 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                    <h3 class="text-xl font-semibold text-gray-800">HTML5 & CSS3</h3>
+                    <p class="text-sm text-gray-500">Semantic Markup</p>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-cyan-500/50 hover:bg-cyan-50 transition duration-300 transform hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-500 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <h3 class="text-xl font-semibold text-gray-800">Python & Django</h3>
+                    <p class="text-sm text-gray-500">Robust Backend</p>
+                </div>
+                 <!-- Skill Card 4 -->
+                 <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-cyan-500/50 hover:bg-cyan-50 transition duration-300 transform hover:-translate-y-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-cyan-500 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M9 16.5V20M15 16.5V20M12 20v2"/></svg>
+                    <h3 class="text-xl font-semibold text-gray-800">Content & SEO</h3>
+                    <p class="text-sm text-gray-500">Digital Strategy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact" class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-400">&copy; 2025 Ashish Singh. All Rights Reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="#" class="text-cyan-400 hover:text-white transition duration-300">GitHub</a>
+                <a href="#" class="text-cyan-400 hover:text-white transition duration-300">LinkedIn</a>
+                <a href="mailto:ashish.singh@example.com" class="text-cyan-400 hover:text-white transition duration-300">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Smooth Scrolling -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple animation on load for the text content
+        document.addEventListener('DOMContentLoaded', () => {
+            const textContent = document.querySelector('.animate-slide-in');
+            textContent.style.opacity = 0;
+            setTimeout(() => {
+                textContent.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                textContent.style.opacity = 1;
+                // Note: transform property should be applied to the class in CSS for best practice, 
+                // but setting initial state here for guaranteed animation start
+                textContent.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
