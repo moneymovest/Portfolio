@@ -14,6 +14,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #111827; /* Deep Charcoal Background (Tailwind bg-gray-900) */
+            scroll-behavior: smooth;
         }
 
         /* Define the new accent color (Indigo-400) */
@@ -101,7 +102,8 @@
             <a href="#about" class="hover:text-indigo-400 transition duration-300">About</a>
             <a href="#work" class="hover:text-indigo-400 transition duration-300">Work</a>
             <a href="#skills" class="hover:text-indigo-400 transition duration-300">Skills</a>
-            <a href="#contact" class="hover:text-indigo-400 transition duration-300">Contact</a>
+            <!-- CONTACT NAV LINK FIXED -->
+            <a href="mailto:itsashish0091@gmail.com" class="hover:text-indigo-400 transition duration-300">Contact</a>
         </nav>
     </header>
 
@@ -117,10 +119,12 @@
                 Crafting engaging <span class="font-semibold text-indigo-400">code-driven experiences</span> through modern development and strategic storytelling.
             </p>
             <div class="inline-flex space-x-4">
-                <a href="#work" class="cta-button bg-indigo-500 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-indigo-500/50">
-                    Work In Progress &rarr;
+                <!-- SEE MY WORK BUTTON TEXT AND LINK FIXED -->
+                <a href="#" class="cta-button bg-gray-700 text-gray-300 font-bold py-3 px-8 rounded-lg text-lg shadow-none hover:bg-gray-600 transition duration-300">
+                    Projects Coming Soon
                 </a>
-                <a href="#contact" class="bg-gray-700 text-gray-300 font-bold py-3 px-8 rounded-lg text-lg hover:bg-gray-600 transition duration-300">
+                <!-- HIRE ME BUTTON LINK FIXED -->
+                <a href="mailto:itsashish0091@gmail.com" class="bg-indigo-500 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-xl hover:bg-indigo-300 transition duration-300 transform hover:scale-105">
                     Hire Me
                 </a>
             </div>
@@ -134,11 +138,12 @@
                     <div class="dramatic-glow w-full h-full rounded-[30%] opacity-80"></div>
                 </div>
 
-                <!-- Your Profile Image: Corrected Absolute Path -->
+                <!-- Your Profile Image: Corrected Relative Path for Deployment -->
                 <img 
                     src="Ashish.jpg" 
                     alt="Ashish Singh Profile" 
                     class="profile-photo absolute inset-0 w-full h-full object-cover transform translate-x-2 translate-y-2 border-4 border-gray-700 shadow-xl"
+                    onerror="this.onerror=null;this.src='https://placehold.co/320x320/1f2937/f3f4f6?text=AS'"
                 >
             </div>
         </div>
@@ -192,7 +197,7 @@
                 </div>
                  <!-- Skill Card 4 -->
                  <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-indigo-500/50 hover:bg-gray-700 transition duration-300 transform hover:-translate-y-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M9 16.5V20M15 16.5V20M12 20v2"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400 mx-auto mb-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 7 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M9 16.5V20M15 16.5V20M12 20v2"/></svg>
                     <h3 class="text-xl font-semibold text-gray-100">Content & SEO</h3>
                     <p class="text-sm text-gray-400">Digital Strategy</p>
                 </div>
@@ -205,9 +210,11 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <p class="text-gray-400">&copy; 2025 Ashish Singh. All Rights Reserved.</p>
             <div class="mt-4 space-x-4">
-                <!-- Links updated to accent color -->
-                <a href="https://github.com/moneymovest" class="text-indigo-400 hover:text-white transition duration-300">GitHub</a>
+                <!-- GITHUB LINK FIXED -->
+                <a href="https://github.com/moneymovest" target="_blank" class="text-indigo-400 hover:text-white transition duration-300">GitHub</a>
+                <!-- LINKEDIN LINK FIXED -->
                 <a href="https://www.linkedin.com/in/ashish-singh-252110380" target="_blank" class="text-indigo-400 hover:text-white transition duration-300">LinkedIn</a>
+                <!-- EMAIL LINK FIXED -->
                 <a href="mailto:itsashish0091@gmail.com" class="text-indigo-400 hover:text-white transition duration-300">Email</a>
             </div>
         </div>
